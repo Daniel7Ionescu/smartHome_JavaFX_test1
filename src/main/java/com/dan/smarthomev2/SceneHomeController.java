@@ -7,9 +7,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,15 +33,37 @@ public class SceneHomeController {
     Home home;
 
     public void useDevice(MouseEvent mouseEvent){
+        //find the id on what was clicked on
         String id = mouseEvent.getPickResult().getIntersectedNode().getId();
+        //find its index in the home list
         int deviceIndex = home.getDeviceObjIndex(id);
-        home.getDevices().get(deviceIndex).toggleOnOff();
+        //toggle on/off
+        home.getDevices().get(deviceIndex).toggle();
 
         //announcer message
         StringBuilder message = new StringBuilder();
         message.append(home.getDevices().get(deviceIndex).getDeviceName());
-        message.append(" is now - ").append(home.getDevices().get(deviceIndex).getStatusText());
+        message.append(" is now - ").append(home.getDevices().get(deviceIndex).getStatusString());
         announcer.setText(message.toString());
+    }
+
+    public void toggleLockEntrancePoint(ScrollEvent scrollEvent){
+        //find the id on what was clicked on
+        String id = scrollEvent.getPickResult().getIntersectedNode().getId();
+        //find its index in the home list
+        int deviceIndex = home.getDeviceObjIndex(id);
+
+        //check if scene element is valid and toggle locked/on
+        if(home.getDevices().get(deviceIndex) instanceof EntrancePoint entrancePoint){
+            entrancePoint.toggleLock();
+            //announcer message
+            StringBuilder message = new StringBuilder();
+            message.append(home.getDevices().get(deviceIndex).getDeviceName());
+            message.append(" is now - ").append(home.getDevices().get(deviceIndex).getStatusString());
+            announcer.setText(message.toString());
+        } else {
+            System.out.println("Invalid event on element: " + scrollEvent.getTarget());
+        }
     }
 
     public void loadData(MouseEvent mouseEvent){
@@ -55,26 +77,30 @@ public class SceneHomeController {
             for(Shape shape : sceneIds){
                 home.addDevice(home.createDevice(shape));
             }
+
             home.printDevices();
             System.out.println("Data is loaded.");
-
             isDataLoaded = true;
         }
     }
 
-    public void startRain(ActionEvent event){
+    //test events
+    @FXML
+    public void startRain(){
         for(Device device : home.getDevices()){
-            if(device instanceof EntrancePoint && device.getDeviceType().equalsIgnoreCase("window")){
-                ((EntrancePoint) device).forceOpenCloseEntrancePoint("close");
+            //using 'device instanceof EntrancePoint entrancePoint' gives a local variable 'entrancePoint' instead of casting EntrancePoint
+            if(device instanceof EntrancePoint entrancePoint && device.getDeviceType().equalsIgnoreCase("window")){
+//                ((EntrancePoint) device).forceOpenCloseEntrancePoint("close");
+                entrancePoint.forceOpenCloseEntrancePoint("close");
             }
         }
-        announcer.setText("Rain is starting, closing all open windows.");
+        announcer.setText("Rain is starting, closing all windows.");
     }
-
-    public void smokeAlarm(ActionEvent event){
+    @FXML
+    public void smokeAlarm(){
         for(Device device : home.getDevices()){
-            if(device instanceof EntrancePoint){
-                ((EntrancePoint) device).forceOpenCloseEntrancePoint("open");
+            if(device instanceof EntrancePoint entrancePoint){
+                entrancePoint.forceOpenCloseEntrancePoint("open");
             }
         }
         announcer.setText("Smoke Alarm triggered opening all windows and doors");

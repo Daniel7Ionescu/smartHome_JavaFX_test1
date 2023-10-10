@@ -3,7 +3,8 @@ package com.dan.smarthomev2.home;
 import com.dan.smarthomev2.devices.Appliance;
 import com.dan.smarthomev2.devices.Device;
 import com.dan.smarthomev2.devices.EntrancePoint;
-import com.dan.smarthomev2.devices.Light;
+import com.dan.smarthomev2.devices.LightDevice;
+import com.dan.smarthomev2.utils.Helper;
 import javafx.scene.shape.Shape;
 
 import java.util.ArrayList;
@@ -17,20 +18,21 @@ public class Home {
         devices = new ArrayList<>();
     }
 
+
     public Device createDevice(Shape shape){
-        String deviceType = Device.extractDeviceType(shape);
+        String deviceType = Helper.getDeviceType(shape);
 
         //create door or window
         if(deviceType.equalsIgnoreCase("door") || deviceType.equalsIgnoreCase("window")){
-            return new EntrancePoint(shape, deviceType);
+            return new EntrancePoint(shape);
         }
         //light
         else if (deviceType.equalsIgnoreCase("light")) {
-            return new Light(shape, deviceType);
+            return new LightDevice(shape);
         }
         //appliance
         else if (deviceType.equalsIgnoreCase("app")) {
-            return new Appliance(shape, deviceType);
+            return new Appliance(shape);
         }
         return null;
     }
