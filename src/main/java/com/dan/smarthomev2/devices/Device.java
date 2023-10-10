@@ -1,35 +1,24 @@
 package com.dan.smarthomev2.devices;
 
+import com.dan.smarthomev2.test_enum_interface.Toggleable;
+import com.dan.smarthomev2.utils.Helper;
 import javafx.scene.shape.Shape;
 
-public abstract class Device {
+public abstract class Device implements Toggleable {
 
-    private String fullDeviceId;
-    private String deviceName;
-    private String deviceType;
-    private int status;
-    private String statusText;
     private Shape shape;
+    private String deviceType;
+    private String deviceName;
+    private String fullDeviceId;
 
-    public abstract void toggleOnOff();
-    public abstract void statusNumberToText();
-    public abstract void setShapeColor();
-
-    public Device(Shape shape, String deviceType) {
+    public Device(Shape shape) {
         this.shape = shape;
-        this.deviceType = deviceType;
+        deviceType = Helper.getDeviceType(shape);
         deviceName = setFormattedName(shape);
         fullDeviceId = shape.getId();
     }
 
-    public void toggleStatus() {
-        status = status == 0 ? 1 : 0;
-    }
-
-    public static String extractDeviceType(Shape shape) {
-        String deviceID = shape.getId();
-        return deviceID.split("_")[0];
-    }
+    public abstract void setShapeColor();
 
     private String setFormattedName(Shape shape) {
         String shapeId = shape.getId();
@@ -41,14 +30,6 @@ public abstract class Device {
         return formattedName.toString();
     }
 
-    public void forceOpenCloseDevice(String command){
-        if(command.equalsIgnoreCase("open")){
-            status = 0;
-        } else if(command.equalsIgnoreCase("close")){
-            status = 1;
-        }
-    }
-
     public String getDeviceName() {
         return deviceName;
     }
@@ -57,31 +38,11 @@ public abstract class Device {
         return deviceType;
     }
 
-    public void setDeviceType(String deviceType) {
-        this.deviceType = deviceType;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
     public Shape getShape() {
         return shape;
     }
 
     public String getFullDeviceId() {
         return fullDeviceId;
-    }
-
-    public String getStatusText() {
-        return statusText;
-    }
-
-    public void setStatusText(String statusText) {
-        this.statusText = statusText;
     }
 }

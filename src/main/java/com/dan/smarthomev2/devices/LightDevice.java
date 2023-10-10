@@ -4,18 +4,15 @@ import com.dan.smarthomev2.test_enum_interface.DeviceStatus;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 
-public class Appliance extends Device{
+public class LightDevice extends Device {
 
     DeviceStatus deviceStatus;
-    private double Volume;
 
-    public Appliance(Shape shape) {
+    public LightDevice(Shape shape) {
         super(shape);
         deviceStatus = DeviceStatus.OFF;
         setShapeColor();
     }
-
-
 
     @Override
     public void toggle() {
@@ -26,9 +23,9 @@ public class Appliance extends Device{
     @Override
     public void setShapeColor() {
         if (deviceStatus.equals(DeviceStatus.ON)) {
-            getShape().setFill(Color.CYAN);
+            getShape().setFill(Color.YELLOW);
         } else if (deviceStatus.equals(DeviceStatus.OFF)) {
-            getShape().setFill(Color.DARKMAGENTA);
+            getShape().setFill(Color.DARKBLUE);
         }
     }
 

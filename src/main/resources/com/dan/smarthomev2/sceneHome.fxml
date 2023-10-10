@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#loadData" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dan.smarthomev2.SceneHomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dan.smarthomev2.SceneHomeController">
    <children>
       <TextField fx:id="announcer" alignment="CENTER" editable="false" layoutX="81.0" layoutY="13.0" prefHeight="26.0" prefWidth="437.0" />
       <Rectangle fx:id="light_Bedroom" arcHeight="5.0" arcWidth="5.0" fill="DARKBLUE" height="117.0" layoutX="24.0" layoutY="89.0" onMouseClicked="#useDevice" stroke="BLACK" strokeType="INSIDE" width="128.0" />
@@ -17,18 +17,18 @@
       <Button layoutX="505.0" layoutY="111.0" mnemonicParsing="false" onAction="#startRain" text="Start Rain" />
       <Button layoutX="495.0" layoutY="148.0" mnemonicParsing="false" onAction="#smokeAlarm" text="Smoke Alarm" />
       <Label layoutX="57.0" layoutY="62.0" text="Bedroom" />
-      <Label layoutX="335.0" layoutY="213.0" text="Master Bedroom" />
+      <Label layoutX="334.0" layoutY="377.0" text="Master Bedroom" />
       <Label layoutX="48.0" layoutY="377.0" text="Living Room" />
       <Label layoutX="195.0" layoutY="377.0" text="Dining Room" />
       <Rectangle fx:id="door_Bedroom" arcHeight="5.0" arcWidth="5.0" fill="DARKGRAY" height="20.0" layoutX="31.0" layoutY="200.0" onMouseClicked="#useDevice" stroke="BLACK" strokeType="INSIDE" width="50.0" />
       <Rectangle fx:id="door_Living_To_Dining" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="50.0" layoutX="142.0" layoutY="304.0" onMouseClicked="#useDevice" stroke="BLACK" strokeType="INSIDE" width="20.0" />
-      <Rectangle fx:id="window_Bedroom" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="75.0" layoutX="147.0" layoutY="109.0" onMouseClicked="#useDevice" stroke="BLACK" strokeType="INSIDE" width="10.0" />
-      <Rectangle fx:id="door_Entrance" arcHeight="5.0" arcWidth="5.0" fill="DARKGRAY" height="50.0" layoutX="142.0" layoutY="220.0" onMouseClicked="#useDevice" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+      <Rectangle fx:id="window_Bedroom" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="75.0" layoutX="147.0" layoutY="109.0" onMouseClicked="#useDevice" onScroll="#toggleLockEntrancePoint" stroke="BLACK" strokeType="INSIDE" width="10.0" />
+      <Rectangle fx:id="door_Entrance" arcHeight="5.0" arcWidth="5.0" fill="DARKGRAY" height="50.0" layoutX="142.0" layoutY="220.0" onMouseClicked="#useDevice" onScroll="#toggleLockEntrancePoint" stroke="BLACK" strokeType="INSIDE" width="20.0" />
       <Rectangle fx:id="door_Master_Bedroom" arcHeight="5.0" arcWidth="5.0" fill="DARKGRAY" height="50.0" layoutX="301.0" layoutY="304.0" onMouseClicked="#useDevice" stroke="BLACK" strokeType="INSIDE" width="20.0" />
-      <Rectangle fx:id="window_Living_Room" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="75.0" layoutX="19.0" layoutY="256.0" onMouseClicked="#useDevice" stroke="BLACK" strokeType="INSIDE" width="10.0" />
-      <Rectangle fx:id="window_Master_Bedroom" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="10.0" layoutX="341.0" layoutY="232.0" onMouseClicked="#useDevice" stroke="BLACK" strokeType="INSIDE" width="75.0" />
-      <Rectangle fx:id="window_Dining_Room" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="10.0" layoutX="193.0" layoutY="279.0" onMouseClicked="#useDevice" stroke="BLACK" strokeType="INSIDE" width="75.0" />
-      <Label layoutX="246.0" layoutY="44.0" text="Click icons / buttons" />
+      <Rectangle fx:id="window_Living_Room" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="75.0" layoutX="19.0" layoutY="256.0" onMouseClicked="#useDevice" onScroll="#toggleLockEntrancePoint" stroke="BLACK" strokeType="INSIDE" width="10.0" />
+      <Rectangle fx:id="window_Master_Bedroom" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="10.0" layoutX="341.0" layoutY="232.0" onMouseClicked="#useDevice" onScroll="#toggleLockEntrancePoint" stroke="BLACK" strokeType="INSIDE" width="75.0" />
+      <Rectangle fx:id="window_Dining_Room" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="10.0" layoutX="193.0" layoutY="279.0" onMouseClicked="#useDevice" onScroll="#toggleLockEntrancePoint" stroke="BLACK" strokeType="INSIDE" width="75.0" />
+      <Label layoutX="211.0" layoutY="44.0" text="Click icons / buttons Scroll to lock" />
       <Rectangle fx:id="app_Widescreen_TV" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="10.0" layoutX="55.0" layoutY="362.0" onMouseClicked="#useDevice" stroke="BLACK" strokeType="INSIDE" width="67.0" />
    </children>
 </AnchorPane>
