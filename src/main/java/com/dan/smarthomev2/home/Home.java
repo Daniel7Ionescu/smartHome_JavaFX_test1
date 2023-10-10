@@ -18,7 +18,6 @@ public class Home {
         devices = new ArrayList<>();
     }
 
-
     public Device createDevice(Shape shape){
         String deviceType = Helper.getDeviceType(shape);
 

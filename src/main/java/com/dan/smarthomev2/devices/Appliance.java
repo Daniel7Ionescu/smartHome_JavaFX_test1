@@ -7,12 +7,15 @@ import javafx.scene.shape.Shape;
 public class Appliance extends Device{
 
     DeviceStatus deviceStatus;
+    private double Volume;
 
     public Appliance(Shape shape) {
         super(shape);
         deviceStatus = DeviceStatus.OFF;
         setShapeColor();
     }
+
+
 
     @Override
     public void toggle() {

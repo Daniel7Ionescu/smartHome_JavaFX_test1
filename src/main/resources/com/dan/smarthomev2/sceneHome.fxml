@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#loadData" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dan.smarthomev2.SceneHomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dan.smarthomev2.SceneHomeController">
    <children>
       <TextField fx:id="announcer" alignment="CENTER" editable="false" layoutX="81.0" layoutY="13.0" prefHeight="26.0" prefWidth="437.0" />
       <Rectangle fx:id="light_Bedroom" arcHeight="5.0" arcWidth="5.0" fill="DARKBLUE" height="117.0" layoutX="24.0" layoutY="89.0" onMouseClicked="#useDevice" stroke="BLACK" strokeType="INSIDE" width="128.0" />
